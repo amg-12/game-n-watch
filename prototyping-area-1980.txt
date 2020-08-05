@@ -32,7 +32,7 @@ a: mov x3 dat
 + mov 4 acc
   teq dat -1
 - jmp a
-  slp 1
+  slp 4
 
 [chip] 
 [type] UC4X
@@ -64,14 +64,15 @@ a: teq acc x2
 @ mov 25 x3
 @ mov 39 x3
 @ mov 38 x3
-  mov x1 acc
-  teq acc 2
-+ mov 0 p1
-  teq acc 3
-+ mov 4 p1
-  teq acc 4
-+ mov 8 p1
-  teq acc -999
+  mov x1 dat
+  teq dat 3
++ tgt acc 0
++ sub 4
+  teq dat 7
++ tlt acc 8
++ add 4
+  mov acc p1
+  teq dat -999
   slp 1
 
 [chip] 
@@ -88,7 +89,7 @@ a: teq acc x2
 + mov dat x2
   teq p0 4
 + mov 40 x3
-  slp 1
+  slp 4
 
 [chip] 
 [type] PAD2
@@ -138,7 +139,7 @@ a: teq acc x2
 + mov dat x2
   teq x1 18
 + mov 0 x1
-  slp 1
+  slp 4
 
 [chip] 
 [type] LCDC2
@@ -193,7 +194,7 @@ ball
 + mov dat x2
   teq x1 22
 + mov 0 x1
-  slp 1
+  slp 4
 
 [chip] 
 [type] UC4
