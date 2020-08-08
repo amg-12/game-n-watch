@@ -3,26 +3,31 @@
 
 [traces] 
 ......................
-.95555C.........954...
-.A.154A.........A15C..
-.A.154A15C......B54A..
-.A9554B54354...1E15E..
-.AA154A.894.....354A..
-.AA154A16A.....95556..
-.AB554B54A.....A15C...
-.AA154A.8A.....B54A...
-.AA154A16A.....354A...
-.A3554354A...14.156...
-.34.15554A14..........
-.......15614..........
+.....95555C.....94.1C.
+.15C.A....A.....A...A.
+.94A96....A.....A...A.
+.2.AA....16....174.16.
+.15EA..9554...........
+.94AB4.A...........1C.
+.2.AA..A...........16.
+.15EA..A..............
+.94A34.A..............
+.2.A...A..............
+.156154A14............
+.14..15614............
 ......................
+
+[chip] 
+[type] BRIDGE
+[x] 1
+[y] 1
 
 [chip] 
 [type] UC6
 [x] 2
 [y] 1
 [code] 
-  mov acc p1
+  mov acc p0
   add 1
   teq acc 3
 + mov 0 acc
@@ -36,7 +41,7 @@ a: mov x3 dat
 
 [chip] 
 [type] UC4X
-[x] 8
+[x] 6
 [y] 1
 [code] 
   slx x0
@@ -51,20 +56,79 @@ a: teq acc x2
 
 [chip] 
 [type] BANK
-[x] 11
+[x] 9
 [y] 1
 [rom] 
-26,35,27,33,31,36,28,32,29,37,30,34,-999,-1
+1,31,13,32,23,35,30,31,22,32,12,35,-999,-1
+
+[chip] 
+[type] BRIDGE
+[x] 1
+[y] 4
 
 [chip] 
 [type] UC6
-[x] 14
-[y] 2
+[x] 2
+[y] 4
 [code] 
-@ mov 25 x3
-@ mov 39 x3
-@ mov 38 x3
-  mov x1 dat
+@ mov 23 acc
+  teq acc 23
++ mov 1 dat
+  teq acc 30
++ mov -1 dat
+  teq p0 1
++ mul -1
++ mov acc x2
++ mul -1
++ add dat
++ mov acc x2
++ mov acc x1
+  slp 4
+
+[chip] 
+[type] PAD2
+[x] 17
+[y] 5
+
+[chip] 
+[type] LCDC2
+[x] 10
+[y] 6
+[custom-screen] 
+ball (2)
+
+[chip] 
+[type] BRIDGE
+[x] 1
+[y] 7
+
+[chip] 
+[type] UC6
+[x] 2
+[y] 7
+[code] 
+@ mov 13 acc
+  teq acc 13
++ mov 1 dat
+  teq acc 22
++ mov -1 dat
+  teq p0 2
++ mul -1
++ mov acc x2
++ mul -1
++ add dat
++ mov acc x2
++ mov acc x1
+  slp 4
+
+[chip] 
+[type] UC6
+[x] 17
+[y] 7
+[code] 
+@ mov 36 x0
+@ mov 34 x0
+  mov x2 dat
   teq dat 3
 + tgt acc 0
 + sub 4
@@ -77,152 +141,40 @@ a: teq acc x2
 
 [chip] 
 [type] UC6
-[x] 5
-[y] 3
+[x] 2
+[y] 10
 [code] 
-  teq p0 2
-+ mov acc x3
-+ mov x0 dat
-+ mov dat x3
-+ mov 0 acc
-+ sub dat
-+ mov dat x2
-  teq p0 4
-+ mov 40 x3
+@ mov 1 acc
+  teq acc 1
++ mov 1 dat
+  teq acc 12
++ mov -1 dat
+  teq p0 0
++ mul -1
++ mov acc x2
++ mul -1
++ add dat
++ mov acc x2
++ mov acc x1
   slp 4
 
 [chip] 
-[type] PAD2
-[x] 11
-[y] 3
-
-[chip] 
-[type] BANK
-[x] 1
-[y] 4
-[rom] 
-23,18,11,12,17,24,28,24,17,12,11,18,23,31
-
-[chip] 
-[type] BRIDGE
-[x] 8
-[y] 5
-
-[chip] 
-[type] UC4
+[type] UC6
 [x] 17
-[y] 5
+[y] 10
 [code] 
-  tcp p0 4
-+ mov 44 x0
-- mov 43 x0
-  slp 1
-
-[chip] 
-[type] BANKXL
-[x] 1
-[y] 6
-[rom] 
-21,16,9,5,6,10,15,22,29,22,15,10,6,5,9,16,21,27,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-
-[chip] 
-[type] UC6
-[x] 5
-[y] 6
-[code] 
-  teq p0 1
-+ mov acc x3
-+ mov x0 dat
-+ mov dat x3
-+ mov 0 acc
-+ sub dat
-+ mov dat x2
-  teq x1 18
-+ mov 0 x1
-  slp 4
-
-[chip] 
-[type] LCDC2
-[x] 10
-[y] 6
-[custom-screen] 
-ball
-
-[chip] 
-[type] BRIDGE
-[x] 16
-[y] 6
-
-[chip] 
-[type] UC4
-[x] 18
-[y] 7
-[code] 
-  teq p0 8
-+ mov 36 x0
-+ mov 34 x0
-+ mov 42 x0
-+ mov -43 x0
-- mov -36 x0
-- mov -34 x0
-- mov -42 x0
-  slp 1
-
-[chip] 
-[type] BRIDGE
-[x] 8
-[y] 8
-
-[chip] 
-[type] BANKXL
-[x] 1
-[y] 9
-[rom] 
-1,2,4,8,14,20,30,20,14,8,4,2,1,3,7,13,19,26,19,13,7,3,0,0,0,0,0,0,0,0,0,0,0
-
-[chip] 
-[type] UC6
-[x] 5
-[y] 9
-[code] 
-  teq p0 0
-+ mov acc x3
-+ mov x0 dat
-+ mov dat x3
-+ mov 0 acc
-+ sub dat
-+ mov dat x2
-  teq x1 22
-+ mov 0 x1
-  slp 4
-
-[chip] 
-[type] UC4
-[x] 18
-[y] 9
-[code] 
-@ mov 43 x0
-  teq p0 4
-+ mov 33 x0
-+ mov 37 x0
-+ mov 43 x0
-+ mov 44 x0
-- mov -33 x0
-- mov -37 x0
-  slp 1
-
-[chip] 
-[type] UC4
-[x] 18
-[y] 11
-[code] 
-  teq p0 0
-+ mov 35 x0
+  teq p1 0
++ mov 31 x0
++ mov -38 x0
+- mov -31 x0
+  teq p1 4
 + mov 32 x0
-+ mov 41 x0
-+ mov -44 x0
-- mov -35 x0
++ mov 36 x0
++ mov 38 x0
 - mov -32 x0
-- mov -41 x0
+  teq p1 8
++ mov 35 x0
++ mov -36 x0
+- mov -35 x0
   slp 1
 
